@@ -188,12 +188,13 @@ public class ReactNativeBiometrics extends ReactContextBaseJavaModule {
 
             @Override
             public void onCancel() {
-                promise.reject("User cancelled fingerprint authorization", "User cancelled fingerprint authorization");
+                final String userCancelCode = String.valueOf(FingerprintManager.FINGERPRINT_ERROR_USER_CANCELED);
+                promise.reject(userCancelCode, "User cancelled fingerprint authorization");
             }
 
             @Override
-            public void onError() {
-                promise.reject("Error detecting fingerprint", "Error detecting fingerprint");
+            public void onError(String errMsgId, String errString) {
+                promise.reject(errMsgId, errString);
             }
         };
     }
@@ -227,12 +228,13 @@ public class ReactNativeBiometrics extends ReactContextBaseJavaModule {
 
             @Override
             public void onCancel() {
-                promise.reject("User cancelled fingerprint authorization", "User cancelled fingerprint authorization");
+                final String userCancelCode = String.valueOf(FingerprintManager.FINGERPRINT_ERROR_USER_CANCELED);
+                promise.reject(userCancelCode, "User cancelled fingerprint authorization");
             }
 
             @Override
-            public void onError() {
-                promise.reject("Error generating public private keys" , "Error generating public private keys");
+            public void onError(String errMsgId, String errString) {
+                promise.reject(errMsgId, errString);
             }
         };
     }
@@ -246,12 +248,13 @@ public class ReactNativeBiometrics extends ReactContextBaseJavaModule {
 
             @Override
             public void onCancel() {
-                promise.reject("User cancelled fingerprint authorization", "User cancelled fingerprint authorization");
+                final String userCancelCode = String.valueOf(FingerprintManager.FINGERPRINT_ERROR_USER_CANCELED);
+                promise.reject(userCancelCode, "User cancelled fingerprint authorization");
             }
 
             @Override
-            public void onError() {
-                promise.reject("Error generating public private keys" , "Error generating public private keys");
+            public void onError(String errMsgId, String errString) {
+                promise.reject(errMsgId, errString);
             }
         };
     }

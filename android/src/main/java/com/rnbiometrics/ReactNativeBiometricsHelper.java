@@ -53,12 +53,14 @@ public class ReactNativeBiometricsHelper extends FingerprintManager.Authenticati
 
     @Override
     public void onAuthenticationError(int errMsgId, CharSequence errString) {
+        final int errMsgIdFinal = errMsgId;
+        final CharSequence errStringFinal = errString;
         if (!selfCancelled) {
             showError(errString);
             icon.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    callback.onError();
+                    callback.onError(String.valueOf(errMsgIdFinal), String.valueOf(errStringFinal));
                 }
             }, ERROR_TIMEOUT_MILLIS);
         }

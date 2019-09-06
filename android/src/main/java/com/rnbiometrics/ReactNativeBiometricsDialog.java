@@ -111,10 +111,10 @@ public class ReactNativeBiometricsDialog extends DialogFragment implements React
     }
 
     @Override
-    public void onError() {
+    public void onError(String errMsgId, String errString) {
         dismissAllowingStateLoss();
         if (biometricAuthCallback != null) {
-            biometricAuthCallback.onError();
+            biometricAuthCallback.onError(errMsgId, errString);
         }
     }
 }

@@ -145,7 +145,7 @@ RCT_EXPORT_METHOD(simplePrompt: (NSString *)promptMessage resolver:(RCTPromiseRe
       if (success) {
         resolve(@(YES));
       } else {
-        reject(@"fingerprint_error", @"Could not confirm fingerprint", nil);
+        reject([@(fingerprintError.code) stringValue], fingerprintError.localizedDescription , nil);
       }
     }];
   });
