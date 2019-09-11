@@ -73,7 +73,7 @@ public class ReactNativeBiometricsHelper extends FingerprintManager.Authenticati
 
     @Override
     public void onAuthenticationFailed() {
-        showError(errorTextView.getResources().getString(R.string.fingerprint_not_recognized));
+        showError(ReactNativeBiometricsDialog.notRecognizedText);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ReactNativeBiometricsHelper extends FingerprintManager.Authenticati
         errorTextView.removeCallbacks(resetErrorTextRunnable);
         icon.setImageResource(R.drawable.ic_fingerprint_success);
         errorTextView.setTextColor(errorTextView.getResources().getColor(R.color.success_color, null));
-        errorTextView.setText(errorTextView.getResources().getString(R.string.fingerprint_recognized));
+        errorTextView.setText(ReactNativeBiometricsDialog.recognizedText);
         icon.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -103,7 +103,7 @@ public class ReactNativeBiometricsHelper extends FingerprintManager.Authenticati
         public void run() {
             errorTextView.setTextColor(
                     errorTextView.getResources().getColor(R.color.hint_color, null));
-            errorTextView.setText(errorTextView.getResources().getString(R.string.fingerprint_hint));
+            errorTextView.setText(ReactNativeBiometricsDialog.hintText);
             icon.setImageResource(R.drawable.ic_fp_40px);
         }
     };

@@ -23,11 +23,17 @@ export default {
    * Prompts user with biometrics dialog using the passed in prompt message if
    * it is provided, returns promise that resolves to the public key of the
    * newly generated key pair
-   * @param {string} promptMessage
+   * @param {string} title
+   * @param {string} cancelButtonText
+   * @param {string} messageText
+   * @param {string} hintText
+   * @param {string} recognizedText
+   * @param {string} notRecognizedText
+   * @param {string} payload
    * @returns {Promise}  Promise that resolves to newly generated public key
    */
-  createKeys: (promptMessage) => {
-    return ReactNativeBiometrics.createKeys(promptMessage)
+  createKeys: (title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText, payload) => {
+    return ReactNativeBiometrics.createKeys(title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText, payload)
   },
   /**
    * Returns promise that resolves to true or false indicating if the keys
@@ -40,22 +46,32 @@ export default {
   /**
    * Prompts user with biometrics dialog using the passed in prompt message and
    * returns promise that resolves to a cryptographic signature of the payload
-   * @param {string} promptMessage
+   * @param {string} title
+   * @param {string} cancelButtonText
+   * @param {string} messageText
+   * @param {string} hintText
+   * @param {string} recognizedText
+   * @param {string} notRecognizedText
    * @param {string} payload
    * @returns {Promise}  Promise that resolves to cryptographic signature
    */
-  createSignature: (promptMessage, payload) => {
-    return ReactNativeBiometrics.createSignature(promptMessage, payload)
+  createSignature: (title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText, payload) => {
+    return ReactNativeBiometrics.createSignature(title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText, payload)
   },
   /**
-   * Prompts user with biometrics dialog using the passed in prompt message and
+   * Prompts user with biometrics dialog using the passed in prompt resources and
    * returns promise that resolves if the user passes, and
    * rejects if the user fails or cancels
-   * @param {string} promptMessage
+   * @param {string} title
+   * @param {string} cancelButtonText
+   * @param {string} messageText
+   * @param {string} hintText
+   * @param {string} recognizedText
+   * @param {string} notRecognizedText
    * @returns {Promise}  Promise that resolves if the user passes, and
    * rejects if the user fails or cancels
    */
-  simplePrompt: (promptMessage) => {
-    return ReactNativeBiometrics.simplePrompt(promptMessage)
+  simplePrompt: (title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText) => {
+    return ReactNativeBiometrics.simplePrompt(title, cancelButtonText, messageText, hintText, recognizedText, notRecognizedText)
   }
 }

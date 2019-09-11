@@ -23,7 +23,8 @@ RCT_EXPORT_METHOD(isSensorAvailable:(RCTPromiseResolveBlock)resolve rejecter:(RC
   }
 }
 
-RCT_EXPORT_METHOD(createKeys: (NSString *)promptMessage resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(createKeys: (NSString *) promptMessage cancelButton: (NSString *) cancelButtonText message: (NSString *) messageText hint: (NSString *) 
+hintText recognized: (NSString *) recognizedText notRecognized: (NSString *) notRecognizedText resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     if (((NSNull *) promptMessage == [NSNull null]) || (promptMessage == nil) || [promptMessage length] == 0) {
       [self createAndStoreKeyPair:resolve rejecter:reject];
@@ -103,7 +104,8 @@ RCT_EXPORT_METHOD(deleteKeys: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromi
   });
 }
 
-RCT_EXPORT_METHOD(createSignature: (NSString *)promptMessage payload:(NSString *)payload resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(createSignature: (NSString *) promptMessage cancelButton: (NSString *) cancelButtonText message: (NSString *) messageText hint: (NSString *) 
+hintText recognized: (NSString *) recognizedText notRecognized: (NSString *) notRecognizedText payload:(NSString *)payload resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     NSData *biometricKeyTag = [self getBiometricKeyTag];
     NSDictionary *query = @{
@@ -136,7 +138,8 @@ RCT_EXPORT_METHOD(createSignature: (NSString *)promptMessage payload:(NSString *
   });
 }
 
-RCT_EXPORT_METHOD(simplePrompt: (NSString *)promptMessage resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(simplePrompt: (NSString *) promptMessage cancelButton: (NSString *) cancelButtonText message: (NSString *) messageText hint: (NSString *) 
+hintText recognized: (NSString *) recognizedText notRecognized: (NSString *) notRecognizedText resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
   dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     LAContext *context = [[LAContext alloc] init];
     context.localizedFallbackTitle = @"";
